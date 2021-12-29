@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student CRUD App</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+
+  <body>
+    <h1 data-position="header">CRUD app developed using NodeJs, Express, MongoDB and EJS!</h1>
+
+    <section data-position="add-student">
+      <div>
+      <h2>Add Student</h2>
+
+      <form action="/students" method="POST">
+        <div class="input-wrapper">
+          <div class="input">
+            <label>First Name</label>        
+            <input type="text" placeholder="first name" name="firstname" />
+          </div>
+          <div class="input">
+            <label>Last Name</label>        
+            <input type="text" placeholder="last name" name="lastname" />
+          </div>
+        </div>
+        <div class="input-wrapper">
+          <div class="input">
+            <label>Date of Birth</label>        
+            <input type="date" placeholder="date of birth" name="dob" />
+          </div>
+          <div class="input">
+            <label>Email</label>        
+            <input type="email" placeholder="email" name="email" />
+          </div>
+        </div>
+        <div class="input-wrapper">
+          <div class="input">
+            <label>T. Subjects</label>        
+            <input type="number" placeholder="no. of subjects" name="noofsubjects" />
+          </div>
+          <div class="input">
+            <label>Phone</label>        
+            <input type="tel" placeholder="phone" name="phone" />
+          </div>
+        </div>
+        <div class="input-wrapper">
+          <div class="input">
+            <label>Teacher</label>        
+            <select name="teacher">
+              <option selected="selected" value="sitwat">Ms. Sitwat</option>
+              <option value="fatima">Ms. Fatima</option>
+              <option value="sundas">Ms. Sundas</option>
+            </select>
+          </div>
+          <div class="input">
+            <label>Picture</label>        
+            <input type="file" placeholder="upload pic" name="pic" accept="image/*"/>
+          </div>
+        </div>
+        <button type="submit" class="action-button">Add student</button>
+      </form>
+    </div>
+    </section>
+
+    <section data-position="update-student">
+      <div>
+        <h2>Update Student</h2>
+        <p>
+          Replace first student with a student written by MongoDB
+        </p>
+        <button id="update-button" class="action-button">Update student</button>
+      </div>
+    </section>
+
+    <section data-position="delete-student">
+      <div>
+        <h2>Delete Student</h2>
+        <p>
+          Delete student. Do nothing if there are no students found
+        </p>
+        <button id="delete-button" class="action-button">Delete student</button>
+      </div>
+      <div id="message"></div>
+    </section>
+
+    <section data-position="students">
+      <h2>Students</h2>
+      <table class="students-list ">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Date of Birth</th>
+            <th>Email</th>
+            <th>No. of Subjects</th>
+            <th>Teacher</th>
+            <th>Phone</th>
+            <th>Picture</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i = 0; i < students.length; i++) {%>
+            <tr>
+              <td><%= students[i].firstname %></td>
+              <td><%= students[i].lastname %></td>
+              <td><%= students[i].dob %></td>
+              <td><%= students[i].email %></td>
+              <td><%= students[i].noofsubjects %></td>
+              <td><%= students[i].teacher %></td>
+              <td><%= students[i].phone %></td>
+              <td>
+                <%= students[i].pic %>
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </section>
+
+    <script src="/main.js"></script>
+  </body>
+</html>
